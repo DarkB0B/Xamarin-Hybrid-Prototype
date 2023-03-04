@@ -6,10 +6,10 @@ namespace Xamarin_Hybrid_Prototype.Services
 {
     public interface IDataStore<T>
     {
-        Task<bool> AddItemAsync(T item);
-        Task<bool> UpdateItemAsync(T item);
-        Task<bool> DeleteItemAsync(int id);
-        Task<T> GetItemAsync(int id);
-        Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        Task<bool> AddPartyAsync(T item);
+        Task<bool> UpdatePartyAsync(T item);
+        Task<bool> DeletePartyAsync(int id);
+        Task<T> GetPartyAsync(int id);
+        Task<IEnumerable<T>> GetPartiesAsync(bool forceRefresh = false);
     }
 }
