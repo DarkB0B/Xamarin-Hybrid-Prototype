@@ -7,12 +7,12 @@ using Xamarin_Hybrid_Prototype.Models;
 
 namespace Xamarin_Hybrid_Prototype.Services
 {
-    public class FakeDb : IDataStore<Party>
+    public class MockDataStore : IDataStore<Party>
     {
         User user = new User { Id = 1, Name = "George", Surname = "Gergeowsky", PhoneNumber = 666666666 };
         private readonly List<Party> parties;
 
-        public FakeDb()
+        public MockDataStore()
         {
             parties = new List<Party>()
             {
@@ -21,21 +21,21 @@ namespace Xamarin_Hybrid_Prototype.Services
                 new Party {  Id = 3, Name = "Fun And Fun", Description = "Good Beer", Date = new DateTime(2024,12,16), Organiser = user}
             };
         }
-        public async Task<bool> AddItemAsync(Party party)
+        public async Task<bool> AddPartyAsync(Party party)
         {
             parties.Add(party);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(int id)
+        public async Task<bool> DeletePartyAsync(int id)
         {
             var oldItem = parties.Where((Party arg) => arg.Id == id).FirstOrDefault();
             parties.Remove(oldItem);
 
             return await Task.FromResult(true);
         }
-        public async Task<bool> UpdateItemAsync(Party party)
+        public async Task<bool> UpdatePartyAsync(Party party)
         {
             var oldItem = parties.Where((Party arg) => arg.Id == party.Id).FirstOrDefault();
             parties.Remove(oldItem);
@@ -43,12 +43,12 @@ namespace Xamarin_Hybrid_Prototype.Services
 
             return await Task.FromResult(true);
         }
-        public async Task<Party> GetItemAsync(int id)
+        public async Task<Party> GetPartyAsync(int id)
         {
             return await Task.FromResult(parties.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Party>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Party>> GetPartiesAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(parties);
         }
