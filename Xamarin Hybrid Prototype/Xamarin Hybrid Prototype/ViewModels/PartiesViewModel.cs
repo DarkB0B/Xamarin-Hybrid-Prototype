@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin_Hybrid_Prototype.Models;
+using Xamarin_Hybrid_Prototype.Views;
 
 namespace Xamarin_Hybrid_Prototype.ViewModels
 {
@@ -80,7 +81,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
             }
 
             await Shell.Current.GoToAsync(
-                $"{nameof(PartyDetailPage)}?{nameof(PartyDetailViewModel.Party.Id)}={party.Id}");
+                $"{nameof(PartyDetailViewModel)}?{nameof(PartyDetailViewModel.PartyId)}={party.Id}");
         }
     }
 }

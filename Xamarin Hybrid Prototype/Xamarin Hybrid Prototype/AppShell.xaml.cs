@@ -11,8 +11,8 @@ namespace Xamarin_Hybrid_Prototype
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(PartyDetailPage), typeof(PartyDetailPage));
+            Routing.RegisterRoute(nameof(NewPartyPage), typeof(NewPartyPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

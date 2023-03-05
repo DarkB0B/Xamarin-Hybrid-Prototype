@@ -7,10 +7,10 @@
              xmlns:model="clr-namespace:Xamarin_Hybrid_Prototype.Models"
              x:Name="BrowsePartiesPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+        <ToolbarItem Text="Add" Command="{Binding AddPartyCommand}" />
     </ContentPage.ToolbarItems>
 
-    <RefreshView x:DataType="local:PartiesViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <RefreshView x:DataType="local:PartiesViewModel" Command="{Binding LoadPartiesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="ItemsListView"
                         ItemsSource="{Binding Parties}"
                         SelectionMode="None">
