@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin_Hybrid_Prototype.ViewModels;
 
 namespace Xamarin_Hybrid_Prototype.Views
 {
@@ -15,6 +16,7 @@ namespace Xamarin_Hybrid_Prototype.Views
         public PartyDetailPage()
         {
             InitializeComponent();
+            BindingContext = new PartyDetailViewModel();
         }
     }
 }

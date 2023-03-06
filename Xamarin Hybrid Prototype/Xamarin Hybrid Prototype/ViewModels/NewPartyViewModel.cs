@@ -8,6 +8,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
 {
     public class NewPartyViewModel : BaseViewModel
     {
+        Random rnd = new Random();
         private string name;
         private string description;
         private DateTime date;
@@ -57,7 +58,8 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
         {
             Party newParty = new Party()
             {
-                Id = Int32.Parse(Guid.NewGuid().ToString()),
+                
+                Id = rnd.Next(100,100000),
                 Name = Name,
                 Description = Description,
                 Date = Date,
