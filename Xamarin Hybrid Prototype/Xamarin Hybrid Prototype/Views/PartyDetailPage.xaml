@@ -5,10 +5,11 @@
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Text:" FontSize="Medium" />
+            <Label Text="Name of party:" FontSize="Medium" />
             <Label Text="{Binding Name}" FontSize="Small"/>
             <Label Text="Description:" FontSize="Medium" />
             <Label Text="{Binding Description}" FontSize="Small"/>
+            <Label Text="Date of the party:"></Label>
             <Label Text="{Binding Date }"></Label>
         </StackLayout>
     </ContentPage.Content>

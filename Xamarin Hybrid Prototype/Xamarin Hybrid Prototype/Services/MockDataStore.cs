@@ -9,16 +9,16 @@ namespace Xamarin_Hybrid_Prototype.Services
 {
     public class MockDataStore : IDataStore<Party>
     {
-        User user = new User { Id = 1, Name = "George", Surname = "Gergeowsky", PhoneNumber = 666666666 };
+        
         private readonly List<Party> parties;
 
         public MockDataStore()
         {
             parties = new List<Party>()
             {
-                new Party {  Id = 1, Name = "Dance Party", Description = "90's Disco Music Party", Date = new DateTime(2024,11,15), Organiser = user},
-                new Party {  Id = 2, Name = "Train Lovers Meeting", Description = "Place to show your favourite trains", Date = new DateTime(2024,12,15), Organiser = user},
-                new Party {  Id = 3, Name = "Fun And Fun", Description = "Good Beer", Date = new DateTime(2024,12,16), Organiser = user}
+                new Party {  Id = 0, Name = "Dance Party", Description = "90's Disco Music Party", Date = new DateTime(2024,11,15)},
+                new Party {  Id = 1, Name = "Train Lovers Meeting", Description = "Place to show your favourite trains", Date = new DateTime(2024,12,15)},
+                new Party {  Id = 2, Name = "Fun And Fun", Description = "Good Beer", Date = new DateTime(2024,12,16)}
             };
         }
         public async Task<bool> AddPartyAsync(Party party)

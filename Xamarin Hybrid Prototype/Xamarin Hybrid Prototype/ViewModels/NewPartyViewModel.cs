@@ -63,13 +63,6 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
                 Name = Name,
                 Description = Description,
                 Date = Date,
-                Organiser = new User()
-                {
-                    Id = 100,
-                    Name = "John",
-                    Surname = "Smith",
-                    PhoneNumber = 0123456789
-                }
 
             };
 

@@ -9,8 +9,6 @@ namespace Xamarin_Hybrid_Prototype.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public User Organiser { get; set; }
-        public List<User> Users { get; set; }
         public DateTime Date { get; set; }
     }
 }
