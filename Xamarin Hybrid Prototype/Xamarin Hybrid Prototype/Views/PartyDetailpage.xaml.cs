@@ -32,25 +32,7 @@ namespace Xamarin_Hybrid_Prototype.Views
 
         private async void Button_OnClicked(object sender, EventArgs e)
         {
-            try
-            {
-                var contact = await Contacts.PickContactAsync();
-
-                if (contact == null)
-                    return;
-
-               var info = new StringBuilder();
-               info.AppendLine(contact.Id);
-               info.AppendLine(contact.DisplayName);
-               info.AppendLine(contact.GivenName);
-               info.AppendLine(contact.FamilyName);
-               info.AppendLine(contact.Phones.FirstOrDefault()?.PhoneNumber??string.Empty);
-               LabelInfo.Text = info.ToString();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
+            
         }
     }
 }

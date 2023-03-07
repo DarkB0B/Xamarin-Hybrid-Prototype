@@ -16,7 +16,7 @@
             <Label Text="Date of the party:"></Label>
             <Label Text="{Binding Date }"></Label>
             <Button Text="See Who Is Invited"  Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PartyDetailViewModel}}, Path=Tapped }">	</Button>
-            <Button Text="Invite Friends" Clicked="Button_OnClicked"></Button>
+            <Button Text="Invite Friends"  Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PartyDetailViewModel}}, Path=InvFriendsTap }"></Button>
             <Label FontSize="Large" x:Name="LabelInfo"></Label>
         </StackLayout>
     </ContentPage.Content>

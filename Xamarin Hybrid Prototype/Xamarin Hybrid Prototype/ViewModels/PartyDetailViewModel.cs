@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin_Hybrid_Prototype.Models;
 using Xamarin_Hybrid_Prototype.Views;
@@ -15,8 +17,10 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
         public PartyDetailViewModel(){
             Title = "Party Details";
             Tapped = new Command(OnTapped);
+            InvFriendsTap = new Command(OnInvFriends);
         }   
         public Command Tapped { get; }
+        public Command InvFriendsTap { get; }
         private int partyId;
         private string name;
         private string description;
@@ -62,7 +66,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
 
         public async void OnTapped()
         {
-            Console.WriteLine("Users: " + Users);
+            Console.WriteLine("Show List Tap");
             if (Users == null)
             {
                 return;
@@ -70,7 +74,28 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
             
             await Shell.Current.GoToAsync($"{nameof(UsersListPage)}?{nameof(UsersListViewModel.Users)}={Users}");
         }
-        
+
+        public async void OnInvFriends()
+        {
+            Console.WriteLine("Inv Friends Tap");
+            try
+            {
+                var contact = await Contacts.PickContactAsync();
+
+                if (contact == null)
+                    return;
+
+                var name = contact.GivenName;
+                var phone = contact.Phones.FirstOrDefault();
+                var surname = contact.FamilyName;
+                Console.WriteLine(phone);
+                //User NewUser = new User() { Name = name, Surname = surname, PhoneNumber = Int32.Parse(phone.ToString()) };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
         
 
 
