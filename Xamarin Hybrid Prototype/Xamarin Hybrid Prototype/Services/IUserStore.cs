@@ -9,7 +9,7 @@ namespace Xamarin_Hybrid_Prototype.Services
     {
         Task<bool> AddUserAsync(T item);
         Task<bool> UpdateUserAsync(T item);
-        Task<T> GetUserAsync(int id);
+        Task<T> GetUserAsync(string id);
         Task<IEnumerable<T>> GetUsersAsync(bool forceRefresh = false);
     }
 }

@@ -16,7 +16,7 @@ namespace Xamarin_Hybrid_Prototype.Services
         {
             users = new List<User>()
             {
-                new User {Name = "John", Surname = "Doe", PhoneNumber = 665666555 }
+                new User {Name = "John", Surname = "Doe", PhoneNumber = "665666555" }
             };
 
         }
@@ -38,7 +38,7 @@ namespace Xamarin_Hybrid_Prototype.Services
 
         
 
-        async Task<User> IUserStore<User>.GetUserAsync(int id)
+        async Task<User> IUserStore<User>.GetUserAsync(string id)
         {
             return await Task.FromResult(users.FirstOrDefault(s => s.PhoneNumber == id));
         }

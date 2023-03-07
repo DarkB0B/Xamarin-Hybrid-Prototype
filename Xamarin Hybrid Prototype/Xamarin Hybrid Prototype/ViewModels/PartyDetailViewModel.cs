@@ -86,10 +86,11 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
                     return;
 
                 var name = contact.GivenName;
-                var phone = contact.Phones.FirstOrDefault();
+                var phone = contact.Phones.FirstOrDefault().ToString();
                 var surname = contact.FamilyName;
-                Console.WriteLine(phone);
-                //User NewUser = new User() { Name = name, Surname = surname, PhoneNumber = Int32.Parse(phone.ToString()) };
+                
+                User NewUser = new User() { Name = name, Surname = surname, PhoneNumber = phone };
+                Users.Add(NewUser);
             }
             catch (Exception ex)
             {
