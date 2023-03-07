@@ -80,7 +80,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
                 return;
             }
             await Shell.Current.GoToAsync($"{nameof(PartyDetailPage)}?{nameof(PartyDetailViewModel.PartyId)}={party.Id}");
-            Console.WriteLine("are we here?");
+          
         }
     }
 }

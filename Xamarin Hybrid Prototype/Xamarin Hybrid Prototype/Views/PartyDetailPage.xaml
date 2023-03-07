@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Xamarin_Hybrid_Prototype"
+             xmlns:viewModels="clr-namespace:Xamarin_Hybrid_Prototype.ViewModels;assembly=Xamarin Hybrid Prototype"
+
              x:Class="Xamarin_Hybrid_Prototype.Views.PartyDetailPage"
              Title="{Binding Title}">
+
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Name of party:" FontSize="Medium" />
@@ -11,6 +15,11 @@
             <Label Text="{Binding Description}" FontSize="Small"/>
             <Label Text="Date of the party:"></Label>
             <Label Text="{Binding Date }"></Label>
+            <Button Text="See Who Is Invited"  Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PartyDetailViewModel}}, Path=Tapped }">	</Button>
+            <Button Text="Invite Friends" Clicked="Button_OnClicked"></Button>
+            <Label FontSize="Large" x:Name="LabelInfo"></Label>
         </StackLayout>
     </ContentPage.Content>
+    
 </ContentPage>
+

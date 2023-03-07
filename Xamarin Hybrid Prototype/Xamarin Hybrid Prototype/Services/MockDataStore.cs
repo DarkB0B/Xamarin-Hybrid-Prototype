@@ -11,9 +11,10 @@ namespace Xamarin_Hybrid_Prototype.Services
     {
         
         private readonly List<Party> parties;
-
+       
         public MockDataStore()
         {
+            
             parties = new List<Party>()
             {
                 new Party {  Id = 0, Name = "Dance Party", Description = "90's Disco Music Party", Date = new DateTime(2024,11,15)},
@@ -21,6 +22,8 @@ namespace Xamarin_Hybrid_Prototype.Services
                 new Party {  Id = 2, Name = "Fun And Fun", Description = "Good Beer", Date = new DateTime(2024,12,16)}
             };
         }
+       
+        
         public async Task<bool> AddPartyAsync(Party party)
         {
             parties.Add(party);
@@ -35,6 +38,9 @@ namespace Xamarin_Hybrid_Prototype.Services
 
             return await Task.FromResult(true);
         }
+
+        
+
         public async Task<bool> UpdatePartyAsync(Party party)
         {
             var oldItem = parties.Where((Party arg) => arg.Id == party.Id).FirstOrDefault();
