@@ -10,23 +10,50 @@ using Xamarin_Hybrid_Prototype.Views;
 
 namespace Xamarin_Hybrid_Prototype.ViewModels
 {
-    [QueryProperty(nameof(Users), nameof(Users))]
+    [QueryProperty(nameof(PartyId), nameof(PartyId))]
     public class UsersListViewModel : BaseViewModel
     {
-       
-       
 
-        
+
+
+        private int partyId;
+        private Party party;
         public Command LoadUsersCommand { get; }
         public List<User> Users;
+        public ObservableCollection<User> UsersCollection { get; }
 
         public UsersListViewModel()
         {
+            UsersCollection = new ObservableCollection<User>();
             Title = "People invited to this party";
-            Users = new List<User>();
+            Console.WriteLine("Constructor");
             LoadUsersCommand = new Command(async () => await ExecuteLoadUsersCommand());
         }
 
+        public int PartyId
+        {
+            get
+            {
+                return partyId;
+            }
+            set
+            {
+                partyId = value;
+                LoadPartyId(value);
+            }
+        }
+        public async void LoadPartyId(int partyId)
+        {
+            Console.WriteLine("Loading PartyId");
+            try
+            {
+                party = await DataStore.GetPartyAsync(partyId);
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Failed to Load Item");
+            }
+        }
         async Task ExecuteLoadUsersCommand()
         {
             IsBusy = true;
@@ -34,10 +61,9 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
             try
             {
                 Users.Clear();
-                var users = await UserStore.GetUsersAsync(true);
-                foreach (var user in users)
+                foreach (var user in Users)
                 {
-                    Users.Add(user);
+                    UsersCollection.Add(user);
                 }
             }
             catch (Exception ex)

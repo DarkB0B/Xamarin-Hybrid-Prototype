@@ -8,23 +8,27 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin_Hybrid_Prototype.Models;
+using Xamarin_Hybrid_Prototype.ViewModels;
 
 namespace Xamarin_Hybrid_Prototype.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UsersListPage : ContentPage
     {
-        public List<User> Users { get; set; }
+        UsersListViewModel _viewModel;
 
-        public UsersListPage(List<User> users)
+        public UsersListPage()
         {
             InitializeComponent();
 
-            Users = users;
+            BindingContext = _viewModel = new UsersListViewModel();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
 
-            MyListView.ItemsSource = Users;
         }
 
-        
     }
 }

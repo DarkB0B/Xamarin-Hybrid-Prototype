@@ -75,7 +75,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
                 return;
             }
             
-            await Shell.Current.GoToAsync($"{nameof(UsersListPage)}?{nameof(UsersListViewModel.Users)}={party.Users}");
+            await Shell.Current.GoToAsync($"{nameof(UsersListPage)}?{nameof(UsersListViewModel.PartyId)}={party.Id}");
         }
 
         public async void OnInvFriends()
