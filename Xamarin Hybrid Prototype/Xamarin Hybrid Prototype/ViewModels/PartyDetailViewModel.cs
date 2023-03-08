@@ -70,7 +70,9 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
         public async void OnTapped()
         {
             Console.WriteLine("Show List Tap");
-            if (Users == null)
+            Console.WriteLine(Users.Count);
+            Console.WriteLine(Users[0].Name);
+            if (Users == null) 
             {
                 return;
             }

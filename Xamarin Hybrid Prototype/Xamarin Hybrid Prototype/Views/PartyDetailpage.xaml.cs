@@ -23,16 +23,6 @@ namespace Xamarin_Hybrid_Prototype.Views
         }
 
        
-        private  void ShowList(object sender, EventArgs e)
-        {
-            
-
-        }
         
-
-        private async void Button_OnClicked(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

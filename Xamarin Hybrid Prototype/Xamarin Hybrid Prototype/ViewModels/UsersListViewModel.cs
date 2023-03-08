@@ -17,7 +17,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
 
 
         private int partyId;
-        private Party party;
+        private Party _party;
         public Command LoadUsersCommand { get; }
         public List<User> Users;
         public ObservableCollection<User> UsersCollection { get; }
@@ -47,7 +47,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
             Console.WriteLine("Loading PartyId");
             try
             {
-                party = await DataStore.GetPartyAsync(partyId);
+                _party = await DataStore.GetPartyAsync(partyId);
             }
             catch (Exception)
             {
@@ -60,7 +60,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
 
             try
             {
-                Users.Clear();
+                UsersCollection.Clear();
                 foreach (var user in Users)
                 {
                     UsersCollection.Add(user);
