@@ -14,11 +14,13 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
     [QueryProperty(nameof(PartyId), nameof(PartyId))]
     public class PartyDetailViewModel : BaseViewModel
     {
-        public PartyDetailViewModel(){
+        public PartyDetailViewModel()
+        {
             Title = "Party Details";
             Tapped = new Command(OnTapped);
             InvFriendsTap = new Command(OnInvFriends);
-        }   
+        }
+
         public Command Tapped { get; }
         public Command InvFriendsTap { get; }
         private int partyId;
@@ -27,6 +29,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
         private string date;
         private List<User> users = new List<User>();
         public int Id { get; set; }
+        public Party party;
 
         public string Name
         {
@@ -72,12 +75,13 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
                 return;
             }
             
-            await Shell.Current.GoToAsync($"{nameof(UsersListPage)}?{nameof(UsersListViewModel.Users)}={Users}");
+            await Shell.Current.GoToAsync($"{nameof(UsersListPage)}?{nameof(UsersListViewModel.Users)}={party.Users}");
         }
 
         public async void OnInvFriends()
         {
             Console.WriteLine("Inv Friends Tap");
+            
             try
             {
                 var contact = await Contacts.PickContactAsync();
@@ -88,9 +92,10 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
                 var name = contact.GivenName;
                 var phone = contact.Phones.FirstOrDefault().ToString();
                 var surname = contact.FamilyName;
-                
-                User NewUser = new User() { Name = name, Surname = surname, PhoneNumber = phone };
-                Users.Add(NewUser);
+                Console.WriteLine(name + " - " + surname + " - " + phone);
+                User newUser = new User() { Name = name, Surname = surname, PhoneNumber = phone };
+                Console.WriteLine(newUser.Name + newUser.Surname + newUser.PhoneNumber);
+                party.Users.Add(newUser);
             }
             catch (Exception ex)
             {
@@ -104,7 +109,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
         {
             try
             {
-                var party = await DataStore.GetPartyAsync(partyId);
+                party = await DataStore.GetPartyAsync(partyId);
                 Id = party.Id;
                 Name = party.Name;
                 Description = party.Description;

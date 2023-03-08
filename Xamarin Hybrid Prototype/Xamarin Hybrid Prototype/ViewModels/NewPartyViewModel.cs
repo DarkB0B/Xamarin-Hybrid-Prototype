@@ -63,6 +63,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
                 Name = Name,
                 Description = Description,
                 Date = Date,
+                Users = new List<User>()
 
             };
 

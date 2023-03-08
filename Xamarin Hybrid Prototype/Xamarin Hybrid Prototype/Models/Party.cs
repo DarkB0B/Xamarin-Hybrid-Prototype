@@ -10,6 +10,6 @@ namespace Xamarin_Hybrid_Prototype.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
-        public List<User> Users;
+        public List<User> Users { get; set; }
     }
 }

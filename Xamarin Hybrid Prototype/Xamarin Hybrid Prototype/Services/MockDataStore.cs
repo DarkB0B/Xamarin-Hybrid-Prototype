@@ -11,19 +11,21 @@ namespace Xamarin_Hybrid_Prototype.Services
     {
         
         private readonly List<Party> parties;
-       
+        
+
         public MockDataStore()
         {
             
+            
             parties = new List<Party>()
             {
-                new Party {  Id = 0, Name = "Dance Party", Description = "90's Disco Music Party", Date = new DateTime(2024,11,15)},
-                new Party {  Id = 1, Name = "Train Lovers Meeting", Description = "Place to show your favourite trains", Date = new DateTime(2024,12,15)},
-                new Party {  Id = 2, Name = "Fun And Fun", Description = "Good Beer", Date = new DateTime(2024,12,16)}
+                new Party {  Id = 0, Name = "Dance Party", Description = "90's Disco Music Party", Date = new DateTime(2024,11,15), Users = new List<User>() },
+                new Party {  Id = 1, Name = "Train Lovers Meeting", Description = "Place to show your favourite trains", Date = new DateTime(2024,12,15), Users = new List<User>()},
+                new Party {  Id = 2, Name = "Fun And Fun", Description = "Good Beer", Date = new DateTime(2024,12,16), Users = new List<User>()}
             };
         }
-       
-        
+
+         
         public async Task<bool> AddPartyAsync(Party party)
         {
             parties.Add(party);
