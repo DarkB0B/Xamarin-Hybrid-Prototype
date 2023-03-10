@@ -13,7 +13,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Party> DataStore => DependencyService.Get<IDataStore<Party>>();
-        public IUserStore<User> UserStore => DependencyService.Get<IUserStore<User>>();
+    
 
         bool isBusy = false;
         public bool IsBusy

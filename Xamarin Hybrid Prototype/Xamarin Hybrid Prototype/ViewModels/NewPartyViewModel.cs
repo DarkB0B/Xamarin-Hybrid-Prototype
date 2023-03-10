@@ -16,7 +16,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
         private string name;
         private string description;
         private DateTime date;
-        
+        private List<User> organisers = new List<User> { new User { Name = "Organiser", Surname = "Organiser", PhoneNumber = "424242424" } };
 
         public NewPartyViewModel()
         {
@@ -61,6 +61,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
 
         private async void OnSave()
         {
+
             int id = rnd.Next(100, 100000);
             Party newParty = new Party()
             {
@@ -69,7 +70,7 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
                 Name = Name,
                 Description = Description,
                 Date = Date,
-                Users = new List<User>()
+                Users = organisers
 
             };
             await DataStore.AddPartyAsync(newParty);
