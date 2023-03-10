@@ -36,5 +36,9 @@
     <string>Xamarin_Hybrid_Prototype</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app needs access to the photo gallery for saving photos and videos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs access to photos gallery for saving photos and videos.</string>
 </dict>
 </plist>

@@ -13,6 +13,7 @@ namespace Xamarin_Hybrid_Prototype
             InitializeComponent();
             Routing.RegisterRoute(nameof(PartyDetailPage), typeof(PartyDetailPage));
             Routing.RegisterRoute(nameof(NewPartyPage), typeof(NewPartyPage));
+            Routing.RegisterRoute(nameof(UsersListPage), typeof(UsersListPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

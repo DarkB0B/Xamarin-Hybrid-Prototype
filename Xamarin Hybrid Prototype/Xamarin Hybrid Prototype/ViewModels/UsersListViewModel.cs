@@ -19,7 +19,6 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
         private int partyId;
         private Party _party;
         public Command LoadUsersCommand { get; }
-        public List<User> Users;
         public ObservableCollection<User> UsersCollection { get; }
 
         public UsersListViewModel()
@@ -61,9 +60,12 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
             try
             {
                 UsersCollection.Clear();
-                foreach (var user in Users)
+                if (_party.Users != null && _party.Users.Count > 0)
                 {
-                    UsersCollection.Add(user);
+                    foreach (var user in _party.Users)
+                    {
+                        UsersCollection.Add(user);
+                    }
                 }
             }
             catch (Exception ex)
@@ -73,6 +75,9 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
             finally
             {
                 IsBusy = false;
+                Console.WriteLine("Finished loading users");
+                Console.WriteLine(UsersCollection.Count);
+                Console.WriteLine(UsersCollection[0].Name);
             }
         }
         public void OnAppearing()
