@@ -8,6 +8,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin_Hybrid_Prototype.Models;
 using Xamarin_Hybrid_Prototype.Views;
+using Xamarin.Essentials;
 
 namespace Xamarin_Hybrid_Prototype.ViewModels
 {
@@ -19,8 +20,10 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
             Title = "Party Details";
             Tapped = new Command(OnTapped);
             InvFriendsTap = new Command(OnInvFriends);
+            SharePartyTap = new Command(OnSharePartyTap);
         }
 
+        public Command SharePartyTap { get; }
         public Command Tapped { get; }
         public Command InvFriendsTap { get; }
         private int partyId;
@@ -99,13 +102,23 @@ namespace Xamarin_Hybrid_Prototype.ViewModels
                 User newUser = new User() { Name = name, Surname = surname, PhoneNumber = phone };
                 Console.WriteLine(newUser.Name + newUser.Surname + newUser.PhoneNumber);
                 party.Users.Add(newUser);
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
         }
-        
+
+        public async void OnSharePartyTap()
+        {
+            Console.WriteLine("Share Party Tap");
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Text = "Join me at " + party.Name + " at " + party.Date.ToString("yyyy MMMM dd") ,
+                Title = "Share Party"
+            });
+        }   
 
 
         public async void LoadPartyId(int partyId)
